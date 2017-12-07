@@ -26,13 +26,7 @@ const styles = theme => ({
         color : '#E74E51',
         fontWeight : 800,
         textAlign : "center",
-        textDecoration : "none",
-        '&:before': {
-            display: 'none',
-        },
-        '&:after': {
-            display: 'none',
-        }
+        textDecoration : "none"
     },    
 
     menuItem :{
@@ -44,8 +38,14 @@ const styles = theme => ({
         boxShadow: "10px rgba(0,0,0,0.3)",
         '&:hover': {
             backgroundColor: 'gray',
+        },
+        '&:focus': {
+            background: theme.palette.common.white,
+            '&:hover': {
+                backgroundColor: 'gray',
+            }
         }
-    },
+        },
 
      menuItemTextMain :{
         color : "#D06C8E"
@@ -61,7 +61,7 @@ class MuiTest extends React.Component {
 
 
     state = {
-        age: '',
+        age: 10,
         name: 'hai',
     };
 
@@ -79,13 +79,14 @@ class MuiTest extends React.Component {
         <FormControl className={classes.formControl}>
                 <Select
                     value={this.state.age}
+                    name="age"
                     onChange={this.handleChange}
                     displayEmpty
-                    name="age"
                     className={classes.selectEmpty}
+                    disableUnderline="true"
                 >
-                    <div value='' className={classes.menuItem}><span className={classes.menuItemTextMain}>전체</span></div>
-                    <div value={10} className={classes.menuItem}>상위랭커</div>
+                    <MenuItem value={10} className={classes.menuItem}><span className={classes.menuItemTextMain}>전체</span></MenuItem>
+                    <MenuItem value={20} className={classes.menuItem}>상위랭커</MenuItem>
                 </Select>
         </FormControl>
         
